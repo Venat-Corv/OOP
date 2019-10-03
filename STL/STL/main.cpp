@@ -15,11 +15,11 @@ using std::cout;
 using std::endl;
 
 //#define STL_ARRAY
-//#define STL_VECTOR
+#define STL_VECTOR
 //#define STL_DEQUE
 //#define STL_FORVARD_LIST
 //#define STL_LIST
-#define STL_MAP
+//#define STL_MAP
 
 #define tab "\t"
 #define delimiter "\n------------------------\n"
@@ -55,11 +55,18 @@ void main()
 
 #ifdef STL_VECTOR
 	vector<int> vec = {0,1,1,2,3,5,8,13,21,34};
-	for (int i = 0; i < vec.size(); i++)
+	try
 	{
-		cout << vec[i] << "\t";
+		for (int i = 0; i < vec.size() * 2; i++)
+		{
+			cout << vec.at(i) << "\t";
+		}
+		cout << endl;
 	}
-	cout << endl;
+	catch (const std::exception& e)
+	{
+		cerr << e.what() << endl;
+	}
 	cout << "size:\t\t" << vec.size() << endl;
 	cout << "capacity:\t" << vec.capacity() << endl;
 	cout << "max_size:\t" << vec.max_size() << endl;
@@ -139,6 +146,8 @@ void main()
 		cout << *it << "\t";
 	}
 	cout << endl;
+
+
 #endif // STL_VECTOR
 
 #ifdef STL_DEQUE
